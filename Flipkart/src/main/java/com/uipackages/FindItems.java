@@ -48,7 +48,9 @@ public class FindItems {
 	@CacheLookup
 	WebElement checkoutprice;
 	
-	
+	@FindBy(how=How.XPATH,using="//div[@class=\"v7-Wbf\"]")
+	@CacheLookup
+	WebElement checkoutnameplus;
 	
 	public void searchitem(String searchitem)
 	{
@@ -58,7 +60,7 @@ public class FindItems {
 			item.click();
 			JavascriptExecutor js = (JavascriptExecutor) driver;
             js.executeScript("window.scrollBy(0,250)", "");
-		    item.sendKeys("camera");
+		    item.sendKeys(searchitem);
 		    item.sendKeys(Keys.ENTER);
             Thread.sleep(5000);
             
@@ -80,8 +82,12 @@ public class FindItems {
             try
             {
             //Verifying Selected Item with cart item name and price using assert
-            String cname=checkoutname.getText();
-            
+            String cname1=checkoutname.getText();
+            String ename=checkoutnameplus.getText();
+            String concat1="  (";
+            String concat2=")";
+            String ename1=concat1+ename+concat2;
+            String cname=cname1+ename1;
             Assert.assertEquals(cname, iname);
             
             

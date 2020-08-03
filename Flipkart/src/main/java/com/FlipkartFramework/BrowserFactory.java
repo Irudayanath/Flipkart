@@ -1,5 +1,6 @@
 package com.FlipkartFramework;
 
+import java.io.File;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.PageLoadStrategy;
@@ -22,7 +23,9 @@ public static WebDriver getDriver()
 		ChromeOptions options=new ChromeOptions();
 		options.addArguments("--disable-notifications");
 		options.setPageLoadStrategy(PageLoadStrategy.NONE);
-		System.setProperty("webdriver.chrome.driver","/Users/Roselin/eclipse-workspace/chromedriver 16");
+		//System.setProperty("webdriver.chrome.driver","/Users/Roselin/eclipse-workspace/chromedriver 16");
+		System.setProperty("webdriver.chrome.driver", new File("File/chromedriver 16").getAbsolutePath());
+
 		driver=new ChromeDriver(options);
 		driver.manage().window().maximize();
 		driver.manage().deleteAllCookies();
@@ -41,7 +44,9 @@ public static WebDriver getDriver(String browsername)
 			ChromeOptions options=new ChromeOptions();
 			options.addArguments("--disable-notifications");
 			options.setPageLoadStrategy(PageLoadStrategy.NONE);
-			System.setProperty("webdriver.chrome.driver","/Users/Roselin/eclipse-workspace/chromedriver 16");
+			//System.setProperty("webdriver.chrome.driver","/Users/Roselin/eclipse-workspace/chromedriver 16");
+			System.setProperty("webdriver.chrome.driver", new File("File/chromedriver 16").getAbsolutePath());
+
 			driver=new ChromeDriver(options);
 			driver.manage().window().maximize();
 			driver.manage().deleteAllCookies();
@@ -51,7 +56,9 @@ public static WebDriver getDriver(String browsername)
 		}
 		else if(browsername.equalsIgnoreCase("firefox"))
 		{
-			System.setProperty("webdriver.gecko.driver","/");
+			//System.setProperty("webdriver.gecko.driver","/");
+			System.setProperty("webdriver.gecko.driver", new File("Files/geckodriver").getAbsolutePath());
+
 			driver=new FirefoxDriver();
 			driver.manage().window().maximize();
 			driver.manage().deleteAllCookies();
@@ -61,7 +68,7 @@ public static WebDriver getDriver(String browsername)
 		}
 		else if(browsername.equalsIgnoreCase("IE"))
 		{
-			System.setProperty("webdriver.ie.driver","");
+			//System.setProperty("webdriver.ie.driver","");
 			driver=new InternetExplorerDriver();
 			driver.manage().window().maximize();
 			driver.manage().deleteAllCookies();

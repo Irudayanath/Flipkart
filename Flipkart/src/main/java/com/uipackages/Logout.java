@@ -17,9 +17,16 @@ public Logout(WebDriver driver)
 @CacheLookup
 WebElement logout;
 
-public void logoutpress()
+
+@FindBy(how=How.XPATH,using="//a[@class=\"_2fqf-l\"]")
+@CacheLookup
+WebElement logoutcomplete;
+public void logoutpress() throws InterruptedException
 {
-	driver.navigate().back();
+	
 	logout.click();
+	Thread.sleep(3000);
+	logoutcomplete.click();
+	Thread.sleep(3000);
 }
 }

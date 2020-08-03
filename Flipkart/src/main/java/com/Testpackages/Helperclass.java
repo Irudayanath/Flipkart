@@ -30,10 +30,13 @@ public void beforeClass()
 	System.out.print("In Beforeclass");
 }
 @BeforeTest
-public void BeforeMethod()
+public void BeforeMethod() throws IOException
 {
 	System.out.print("in @BeforeMethod");
 	Helperclass.driver=BrowserFactory.getDriver("chrome");
+	Helperclass.driver=BrowserFactory.getDriver("firefox");
+	Helperclass.driver=BrowserFactory.getDriver("IE");
+	
 }
 @AfterMethod
 public void close()
